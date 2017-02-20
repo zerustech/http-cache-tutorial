@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# This file is part of the ZerusTech HTTP Cache Tutorial package.
+# 
+# (c) Michael Lee <michael.lee@zerustech.com>
+#
+# For the full copyright and license information, please view the LICENSE file 
+# that was distributed with this source code.
+
+default_base=$(dirname `cd -P $(dirname $BASH_SOURCE) && pwd`) && source $default_base/../../bootstrap.sh
+runtime_base=$(dirname `cd $(dirname $BASH_SOURCE) && pwd`)
+
+# This script accepts optional arguments for stopping a php builtin server from
+# command line. It is a wrapper to the php.service script.
+# 
+# @author Michael Lee <michael.lee@zerustech.com>
+
+host="0.0.0.0"
+port=8000
+doc_root=$runtime_base/web
+pid_file=''
+
+function usage()
+{
+    printf "php.stop: usage: php.stop [-h host] [-o port] [-d doc_root] [-P pid_file] [arguments ...]\n"
+    exit 0
+}
+
+while getopts "h:o:d:P:" opt; do
+
+    case $opt in
+
+        h) host="$OPTARG";;
+
+        o) port="$OPTARG";;
+
+        d) doc_root="$OPTARG";;
+
+        P) pid_file="$OPTARG";;
+
+        *) usage
+           ;;
+
+    esac
+
+done
+
+shift $((OPTIND - 1))
+
+if [ "$pid_file" == "" ]; then
+
+    pid_file="$app_var/php-$host-$port.pid"
+
+fi
+
+$app_bin/php/php.service -h "$host" -o "$port" -d "$doc_root" -P "$pid_file" stop "$@"
