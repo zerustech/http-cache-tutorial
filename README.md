@@ -58,7 +58,7 @@ debug                    # the directory name of the debug test case is "debug"
  |_ web                  # php document root
      \_ index.php        # default php script
      |_ *.php            # other test scripts
-     ...                 # ...
+     |_ ...              # ...
 
 ```
 
