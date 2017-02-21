@@ -72,7 +72,7 @@ The directory structure of this project is as follows:
   |   |_ varnish
   |       \_ ban-by-tags   # varnish test cases for banning contents by tags
   |       |_ ban-by-url    # varnish test cases for banning contents by url
-  |       |_ debug         # varnish test cases for debuggin cache
+  |       |_ debug         # varnish test cases for debugging cache
   |       |_ ...           # ...
   |
   |_ var                   # log and pid files
