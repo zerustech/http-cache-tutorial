@@ -1,5 +1,4 @@
-HTTP Cache Tutorial
-================================================
+# HTTP Cache Tutorial #
 This project is a tutorial for HTTP/1.1 caching mechanism and Varnish cache
 server. It covers some common topics, best practices, issues, and tricks about HTTP/1.1 caching and Varnish by test cases—each test case consists of a `vcl` file, one or more php files, a `test.sh` file for running the test case, and other related files.
 
@@ -17,8 +16,7 @@ file `/etc/hosts` (please refer to the test cases for details).
 
 :::
 
-How to Use This Tutorial
---------------------------------------------------------
+## How to Use This Tutorial ##
 
 ### Change Configuration ###
 
@@ -118,8 +116,7 @@ $ service/php.start
 $ service/php.stop
 ```
 
-References
-----------
+# References #
 * [Varnish 5.0 Tutorial][2]
 * [Varnish 5.0 Users Guide][3]
 * [Varnish 5.0 Reference Manual][4]
@@ -137,6 +134,5 @@ References
 [7]: https://tools.ietf.org/html/rfc7234 "HTTP/1.1 Caching"
 [8]: http://foshttpcache.readthedocs.io/en/stable/proxy-configuration.html#proxy-configuration "Varnish Configuration for FOS Http Cache"
 
-License
--------
+# License #
 This tutorial is published under the [MIT License][1].
