@@ -46,19 +46,19 @@ This project organizes test cases into the following first-level directories:
 All test cases share the same directory structure. Take varnish debug test case as an example:
 
 ```bash
-debug                  # the directory name of the debug test case is "debug"
-  \_ bin/test.sh       # the test case script
-  \_ etc/config.vcl    # the varnish configuration file
-  \_ service 
-  .   \_ varnish.start # script for starting varnish 
-  .   \_ varnish.stop  # script for stopping varnish
-  .   \_ php.start     # script for starting php builtin server
-  .   \_ php.stop      # script for stopping php builtin server
-  .
-   \_ web              # php document root
-       \_ index.php    # default php script
-       \_ *.php        # other test scripts
-       ...             # ...
+debug                    # the directory name of the debug test case is "debug"
+ \_ bin/test.sh          # the test case script
+ |_ etc/config.vcl       # the varnish configuration file
+ |_ service
+ |   \_ varnish.start    # script for starting varnish
+ |   |_ varnish.stop     # script for stopping varnish
+ |   |_ php.start        # script for starting php builtin server
+ |   |_ php.stop         # script for stopping php builtin server
+ |
+ |_ web                  # php document root
+     \_ index.php        # default php script
+     |_ *.php            # other test scripts
+     ...                 # ...
 
 ```
 
