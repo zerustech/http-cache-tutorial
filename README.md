@@ -1,7 +1,7 @@
 HTTP Cache Tutorial
 ================================================
 This project is a tutorial for HTTP/1.1 caching mechanism and Varnish cache
-server. It covers some common topics, best preatices, issues, and tricks about HTTP/1.1 caching and Varnish by test cases—each test case consists of a `vcl` file, one or more php files, a `test.sh` file for running the test case, and other related files.
+server. It covers some common topics, best practices, issues, and tricks about HTTP/1.1 caching and Varnish by test cases—each test case consists of a `vcl` file, one or more php files, a `test.sh` file for running the test case, and other related files.
 
 Each test case addresses and resolves a specific problem and it has been created to be as
 simple as possible, so that you can concentrate on the most important part of
@@ -102,7 +102,7 @@ $ bin/test.sh
 ::: info-box note
 
 NOTE: when running test cases with `run.sh` or `test.sh`, the varnish cache
-server and php builtin web servers well be started and stopped automatically.
+server and php builtin web servers will be started and stopped automatically.
 
 :::
 
