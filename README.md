@@ -16,6 +16,41 @@ file `/etc/hosts` (please refer to the test cases for details).
 
 :::
 
+## Directory Structure ##
+
+The directory structure of this project is as follows:
+
+```bash
+<base>             # project base directory
+  \_ bin
+  |   \_ app       # scripts for starting/stopping test cases
+  |   |_ http      # scripts perform http tasks (e.g., sending http requests).
+  |   |_ php       # scripts perform php tasks (e.g., starting php server).
+  |   |_ varnish   # varnish management scripts (e.g., starting varnish server).
+  |
+  |_ docs          # documents
+  |_ etc           # varnish builtin vcl file and secret key file
+  |_ lib           # scripts providing common functions (e.g., tty functions).
+  |
+  |_ test-cases
+  |   \_ default   # default test cases
+  |   |
+  |   |_ http
+  |   |   \_ rfc7232-conditional-requests   # rfc7232 test cases
+  |   |   |_ rfc7233-range-requests         # rfc7233 test cases
+  |   |   |_ rfc7234-caching                # rfc7234 test cases
+  |   |   |_ ...                            # ...
+  |   |
+  |   |_ varnish
+  |       \_ ban-by-tags   # varnish test cases for banning contents by tags
+  |       |_ ban-by-url    # varnish test cases for banning contents by url
+  |       |_ debug         # varnish test cases for debuggin cache
+  |       |_ ...           # ...
+  |
+  |_ var                   # log and pid files
+
+```
+
 ## How to Use This Tutorial ##
 
 ### Change Configuration ###
