@@ -36,7 +36,7 @@ are available.
 
 ::: info-box note
 
-This tutorial is based on HTTP/1.1 and Varnish 5.0, both are the latest release
+This tutorial is based on HTTP/1.1 and Varnish 5.0, both are the latest releases
 at the time of documentation.
 
 The `netcat` or `nc` is needed to run the test cases. You also need update
@@ -153,7 +153,7 @@ $ #     -v Display output from test cases.
 
 ### Run Single Test Case ###
 
-Take the varnish debug test cases for example:
+Take the varnish debug test case for example:
 ```bash
 $ cd <base>
 $ cd test-cases/varnish/debug
@@ -169,7 +169,7 @@ server and php builtin web servers will be started and stopped automatically.
 
 ### Start and Stop Servers ###
 Sometimes, you may want to manually start and stop the varnish and php servers.
-Take the varnish debug test cases for example:
+Take the varnish debug test case for example:
 ```bash
 $ cd <base>
 $ cd test-cases/varnish/debug
