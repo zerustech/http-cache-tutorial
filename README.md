@@ -1,15 +1,43 @@
 # HTTP Cache Tutorial #
 This project is a tutorial for HTTP/1.1 caching mechanism and Varnish cache
-server. It covers some common topics, best practices, issues, and tricks about HTTP/1.1 caching and Varnish by test cases—each test case consists of a `vcl` file, one or more php files, a `test.sh` file for running the test case, and other related files.
+server. It covers some common topics, best practices, issues, and tricks about
+HTTP/1.1 caching and Varnish by test cases—each test case consists of a `vcl`
+file, one or more php files, a `test.sh` file for running the test case, and
+other related files.
 
-Each test case addresses and resolves a specific problem and it has been created to be as
-simple as possible, so that you can concentrate on the most important part of
-the solution.
+Each test case addresses and resolves a specific problem and it has been created
+to be as simple as possible, so that you can concentrate on the most important
+part of the solution.
+
+Bascially, test cases are organized into two big categories: HTTP and Varnish
+test cases.
+
+The HTTP test cases are intended for implementing and explaining
+scenarios/algorithms in RFC specifications of caching machanism, including
+[RFC7232][5], [RFC7233][6], and [RFC7234][7].
+
+Varnish is used as the cache implementation for all test cases, because it is
+widely used by other professionals and is also our first choice for caching
+solution in our web projects. Unfortunately, it does not conform to all RFC
+specifications, such as it ignores all request `Cache-Control` directives as
+well as the `Pragma: no-cache` header field by default; it does not support
+multiple byte ranges in range request; it does not conform to the algorithm,
+recommended by RFC, when generating a heuristic freshness lifetime. In other to
+present those scenarios that are not supported by Varnish by default, we
+developed a custom `vcl` file for each such test case.
+
+The Varnish test cases are intended for presenting common best practices of
+Varnish, such as banning objects by tags, restarting a request, content
+negotiation with `Vary` header field, cookie manipulation, and user context
+hash.
+
+We will add more test cases in the future, when new scenarios or best practices
+are available.
 
 ::: info-box note
 
-This tutorial is based on HTTP/1.1 and Varnish 5.0, both are the latest release at the time
-of documentation.
+This tutorial is based on HTTP/1.1 and Varnish 5.0, both are the latest release
+at the time of documentation.
 
 The `netcat` or `nc` is needed to run the test cases. You also need update
 file `/etc/hosts` (please refer to the test cases for details).
@@ -24,7 +52,7 @@ The directory structure of this project is as follows:
 <base>             # project base directory
   \_ bin
   |   \_ app       # scripts for starting/stopping test cases
-  |   |_ http      # scripts perform http tasks (e.g., sending http requests).
+  |   |_ http      # scripts perform HTTP tasks (e.g., sending HTTP requests).
   |   |_ php       # scripts perform php tasks (e.g., starting php server).
   |   |_ varnish   # varnish management scripts (e.g., starting varnish server).
   |
