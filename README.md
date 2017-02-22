@@ -163,8 +163,8 @@ $ bin/test.sh
 
 ::: info-box note
 
-NOTE: when running test cases with `run.sh` or `test.sh`, the varnish cache
-server and php builtin web servers will be started and stopped automatically.
+NOTE: when running test cases with `run.sh` or `test.sh`, both the varnish
+cache server and the php builtin web server are started and stopped automatically.
 
 :::
 
