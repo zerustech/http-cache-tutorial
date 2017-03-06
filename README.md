@@ -149,7 +149,7 @@ $ # run all test cases automatically in verbose mode.
 $ bin/tasks/tasks.run -a -v test-cases
 $
 $ # Usage of tasks.run:
-$ # run.sh [-iasv] [-S script_name_pattern] [-l log_file] [test_case_dir]
+$ # tasks.run [-iasv] [-S script_name_pattern] [-l log_file] [test_case_dir]
 $ # The options are as follows:
 $ #     -i Request confirming before running each test case.
 $ #     -a Run all test cases automatically.
@@ -168,7 +168,7 @@ $ bin/test.sh
 
 ::: info-box note
 
-NOTE: when running test cases with `run.sh` or `test.sh`, both the varnish
+NOTE: when running test cases with `tasks.run` or `test.sh`, both the varnish
 cache server and the php builtin web server are started and stopped automatically.
 
 :::
