@@ -28,9 +28,9 @@ tty_printf -f green "Test Case: remove all cookies\n"
 tty_print_line -f green
 
 tty_printf "Include some cookies to access index.php: cookies are removed.\n"
-$app_bin/http/get.sh -l /index.php "Cookie: cookie0=value0; cookie1=value1; cookie2=value2; cookie3=value3; cookie4=value4  ;"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Cookie: cookie0=value0; cookie1=value1; cookie2=value2; cookie3=value3; cookie4=value4  ;"
 
 tty_printf "Include some cookies to access admin/index.php: cookies are kept.\n"
-$app_bin/http/get.sh -l /admin/index.php "Cookie: cookie0=value0; cookie1=value1; cookie2=value2; cookie3=value3; cookie4=value4  ;"
+$app_vendor_zerustech_cli_bin/http/http.get -l /admin/index.php "Cookie: cookie0=value0; cookie1=value1; cookie2=value2; cookie3=value3; cookie4=value4  ;"
 
 $service/php.stop && $service/varnish.stop

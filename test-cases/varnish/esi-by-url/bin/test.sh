@@ -28,9 +28,9 @@ tty_printf -f green "Test Case: esi by url\n"
 tty_print_line -f green
 
 tty_printf "Access index-esi.php.\n"
-$app_bin/http/get.sh -l /index-esi.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index-esi.php
 
 tty_printf "Access index-non-esi.php.\n"
-$app_bin/http/get.sh -l /index-non-esi.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index-non-esi.php
 
 $service/php.stop && $service/varnish.stop

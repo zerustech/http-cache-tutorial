@@ -29,17 +29,17 @@ tty_printf -f green "Test Case: stale response.\n"
 tty_print_line -f green
 
 tty_printf "Initialize cache.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Stop php builtin server.\n"
 $service/php.stop
 
 tty_printf "Sleep for 6 seconds and access index.php: receives a cached 200
 response (hit).\n"
-sleep 6 && $app_bin/http/get.sh -l /index.php
+sleep 6 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Sleep for 10 seconds and access index.php: fails with a 503
 response.\n"
-sleep 10 && $app_bin/http/get.sh -l /index.php
+sleep 10 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 $service/php.stop && $service/varnish.stop

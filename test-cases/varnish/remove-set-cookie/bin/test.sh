@@ -28,9 +28,9 @@ tty_printf -f green "Test Case: remove 'Set-Cookie' response header field\n"
 tty_print_line -f green
 
 tty_printf "Access index.php: receive a fresh 200 response (miss and Set-Cookie is removed).\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Access index.php: receive a cached 200 response (hit).\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 $service/php.stop && $service/varnish.stop

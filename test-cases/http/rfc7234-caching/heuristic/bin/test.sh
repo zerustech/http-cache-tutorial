@@ -30,12 +30,12 @@ tty_printf -f green "Test Case: heuristic freshness lifetime.\n"
 tty_print_line -f green
 
 tty_printf "Initialize cache.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Access index.php: receives a cached 200 response (hit)."
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Sleep for 6 seconds and test: receives a fresh 200 response (miss)."
-sleep 6 && $app_bin/http/get.sh -l /index.php
+sleep 6 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 $service/php.stop && $service/varnish.stop

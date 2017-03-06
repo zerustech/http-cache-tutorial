@@ -25,3 +25,4 @@ php_home=/opt/php/5.6.14.mysql.5.6.27
 varnish_home=/opt/varnish/5.0.0
 
 source $app_vendor_zerustech_cli_lib/tty.sh
+source $app_vendor_zerustech_cli_lib/http.sh

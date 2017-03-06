@@ -52,9 +52,7 @@ The directory structure of this project is as follows:
 ```bash
 <base>             # project base directory
   \_ bin
-  |   \_ app       # scripts for starting/stopping test cases
-  |   |_ http      # scripts perform HTTP tasks (e.g., sending HTTP requests).
-  |   |_ php       # scripts perform php tasks (e.g., starting php server).
+  |   \_ tasks     # scripts for starting/stopping test cases
   |   |_ varnish   # varnish management scripts (e.g., starting varnish server).
   |
   |_ docs          # documents
@@ -81,6 +79,13 @@ The directory structure of this project is as follows:
 ```
 
 ## How to Use This Tutorial ##
+
+### Install Composer Dependencies ###
+
+```bash
+$ cd <base>
+$ composer install
+```
 
 ### Change Configuration ###
 
@@ -132,19 +137,19 @@ debug                    # the directory name of the debug test case is "debug"
 $ cd <base>
 $
 $ # run all test cases interactively in silent mode.
-$ bin/app/run.sh test-cases
+$ bin/tasks/tasks.run test-cases
 $
 $ # run all test cases interactively in verbose mode.
-$ bin/app/run.sh -v test-cases 
+$ bin/tasks/tasks.run -v test-cases 
 $
 $ # run all test cases automatically in silent mode.
-$ bin/app/run.sh -a test-cases
+$ bin/tasks/tasks.run -a test-cases
 $
 $ # run all test cases automatically in verbose mode.
-$ bin/app/run.sh -a -v test-cases
+$ bin/tasks/tasks.run -a -v test-cases
 $
-$ # Usage of run.sh:
-$ # run.sh [-iasv] [-l log_file] <test_case_dir>
+$ # Usage of tasks.run:
+$ # run.sh [-iasv] [-S script_name_pattern] [-l log_file] [test_case_dir]
 $ # The options are as follows:
 $ #     -i Request confirming before running each test case.
 $ #     -a Run all test cases automatically.
@@ -188,6 +193,7 @@ $ service/php.stop
 * [HTTP/1.1 Range Requests][6]
 * [HTTP/1.1 Caching][7]
 * [Varnish Configuration for FOS Http Cache][8]
+* [The zerustech/cli project][9]
 
 [1]: https://opensource.org/licenses/MIT "The MIT License (MIT)"
 [2]: https://www.varnish-cache.org/docs/trunk/tutorial/index.html "Varnish 5.0 Tutorial"
@@ -197,6 +203,7 @@ $ service/php.stop
 [6]: https://tools.ietf.org/html/rfc7233 "HTTP/1.1 Range Requests"
 [7]: https://tools.ietf.org/html/rfc7234 "HTTP/1.1 Caching"
 [8]: http://foshttpcache.readthedocs.io/en/stable/proxy-configuration.html#proxy-configuration "Varnish Configuration for FOS Http Cache"
+[9]: https://github.com/zerustech/cli "zerustech/cli"
 
 # License #
 This tutorial is published under the [MIT License][1].

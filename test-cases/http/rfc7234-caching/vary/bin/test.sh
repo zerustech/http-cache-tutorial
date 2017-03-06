@@ -29,19 +29,19 @@ tty_print_line -f green
 
 tty_printf "Include 'X-Accept-Content-Category: test001' in the reqeuest and
 test: receives a fresh 200 response (miss).\n"
-$app_bin/http/get.sh -l /index.php "X-Accept-Content-Category: test001"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test001"
 
 tty_printf "Include 'X-Accept-Content-Category: test002' in the reqeuest and
 test: receives a fresh 200 response (miss).\n"
-$app_bin/http/get.sh -l /index.php "X-Accept-Content-Category: test002"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test002"
 
 tty_printf "Include 'X-Accept-Content-Category: test001' in the reqeuest and
 test: receives a cached 200 response (hit).\n"
-$app_bin/http/get.sh -l /index.php "X-Accept-Content-Category: test001"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test001"
 
 tty_printf "Include 'X-Accept-Content-Category: test002' in the reqeuest and
 test: receives a cached 200 response (hit).\n"
-$app_bin/http/get.sh -l /index.php "X-Accept-Content-Category: test002"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test002"
 
 tty_printf "The selected responses for category 'test001' and 'test002' are
 different, therefore we can confirm that the 'X-Accept-Content-Category' request

@@ -33,11 +33,11 @@ echo "0123456789" > $web/asset.txt
 tty_printf "Contents of asset.txt: 0123456789\n\n"
 
 tty_printf "Initialize cache.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Include 'Range: 0-5' in the request and test: receives a cached 206
 response (hit).\n"
-$app_bin/http/get.sh -l /index.php "Range: bytes=0-5"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Range: bytes=0-5"
 
 tty_printf "Change contents of asset.txt.\n"
 echo "abcdefghij" > $web/asset.txt
@@ -45,10 +45,10 @@ tty_printf "Contents of asset.txt: abcdefghij\n\n"
 
 tty_printf "Include 'Range: 0-5' in the request and test: receives a cached 206
 response (hit).\n"
-$app_bin/http/get.sh -l /index.php "Range: bytes=0-5"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Range: bytes=0-5"
 
 tty_printf "Sleep for 6 second, include 'Range: 0-5' in the request and test:
 receives a fresh 206 response (miss).\n"
-sleep 6 && $app_bin/http/get.sh -l /index.php "Range: bytes=0-5"
+sleep 6 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Range: bytes=0-5"
 
 $service/php.stop && $service/varnish.stop

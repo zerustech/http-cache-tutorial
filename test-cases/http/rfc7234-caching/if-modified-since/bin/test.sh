@@ -31,15 +31,15 @@ tty_printf "Reset asset.txt.\n\n"
 printf "a001" > $web/asset.txt
 
 tty_printf "Initialize cache.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Access index.php without the 'If-Modified-Since' header field: receives
 a cached 200 response (hit).\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Sleep for 1 second and use current date as the value of
 'If-Modified-Since' header field: receives a 304 response.\n"
-$app_bin/http/get.sh -l /index.php "If-Modified-Since: `http_gmt_date`"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "If-Modified-Since: `http_gmt_date`"
 
 tty_printf "Change contents of asset.txt.\n\n"
 printf "a002" > $web/asset.txt
@@ -48,10 +48,10 @@ tty_printf "Sleep for 1 second and use a date of 1 second ago as
 the value of 'If-Modified-Since' header field: receives a 304 response.\n"
 tty_printf -f red "NOTE: still receives a 304 response, because the cached
 object has not expired.\n"
-sleep 1 && $app_bin/http/get.sh -l /index.php "If-Modified-Since: `http_gmt_date \"-1\"`"
+sleep 1 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php "If-Modified-Since: `http_gmt_date \"-1\"`"
 
 tty_printf "Sleep for 5 seconds and test with a date of 10 seconds ago:
 receives a fresh 200 response (miss).\n"
-sleep 5 && $app_bin/http/get.sh -l /index.php "If-Modified-Since: `http_gmt_date \"-10\"`"
+sleep 5 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php "If-Modified-Since: `http_gmt_date \"-10\"`"
 
 $service/php.stop && $service/varnish.stop

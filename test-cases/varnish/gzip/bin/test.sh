@@ -29,10 +29,10 @@ tty_print_line -f green
 
 tty_printf "Access index.php without 'Accept-Encoding' header field: receives a
 200 plain text response.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Access index.php with 'Accept-Encoding: gzip' header field: receives a
 200 gzip encoded response.\n"
-$app_bin/http/get.sh -l /index.php "Accept-Encoding: gzip"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Accept-Encoding: gzip"
 
 $service/php.stop && $service/varnish.stop

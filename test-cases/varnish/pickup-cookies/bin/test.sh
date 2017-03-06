@@ -28,6 +28,6 @@ tty_printf -f green "Test Case: pick up cookies\n"
 tty_print_line -f green
 
 tty_printf "Include cookies to access index.php: only required cookies are picked up.\n"
-$app_bin/http/get.sh -l /index.php "Cookie: cookie0=value0; cookie1=value1; cookie2=value2; cookie3=value3; cookie4=value4  ;"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Cookie: cookie0=value0; cookie1=value1; cookie2=value2; cookie3=value3; cookie4=value4  ;"
 
 $service/php.stop && $service/varnish.stop

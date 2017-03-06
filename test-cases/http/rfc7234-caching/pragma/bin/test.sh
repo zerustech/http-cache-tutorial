@@ -28,10 +28,10 @@ tty_printf -f green "Test Case: request 'Pragma: no-cache' header field.\n"
 tty_print_line -f green
 
 tty_printf "Initialize cache.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Include 'Pragma: no-cache' header in request and test: receives a
 fresh 200 response (miss).\n"
-$app_bin/http/get.sh -l /index.php "Pragma: no-cache"
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "Pragma: no-cache"
 
 $service/php.stop && $service/varnish.stop
