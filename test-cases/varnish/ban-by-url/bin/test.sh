@@ -28,13 +28,13 @@ tty_printf -f green "Test Case: ban by urls\n"
 tty_print_line -f green
 
 tty_printf "Access index.php to initialize cache.\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Sleep for 1 second and access index.php: receives a cached 200
 response (hit).\n"
-sleep 1 && $app_bin/http/get.sh -l /index.php
+sleep 1 && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Ban by urls ^/index and test: receives a fresh 200 response (miss).\n"
-$app_bin/http/ban.sh -l ^/index && $app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.ban -l ^/index && $app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 $service/php.stop && $service/varnish.stop

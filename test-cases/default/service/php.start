@@ -15,31 +15,24 @@ runtime_base=$(dirname `cd $(dirname $BASH_SOURCE) && pwd`)
 # 
 # @author Michael Lee <michael.lee@zerustech.com>
 
-host="0.0.0.0"
-port=8000
+socket="0.0.0.0:8000"
 doc_root=$runtime_base/web
-pid_file=''
 
 function usage()
 {
-    printf "php.start: usage: php.start [-h host] [-o port] [-d doc_root] [-P pid_file] [arguments ...]\n"
+    printf "php.start: usage: php.start [-S host:port] [-t doc_root] [arguments ...]\n"
     exit 0
 }
 
-while getopts "h:o:d:P:" opt; do
+while getopts "S:t:" opt; do
 
     case $opt in
 
-        h) host="$OPTARG";;
+        S) socket="$OPTARG";;
 
-        o) port="$OPTARG";;
+        t) doc_root="$OPTARG";;
 
-        d) doc_root="$OPTARG";;
-
-        P) pid_file="$OPTARG";;
-
-        *) usage
-           ;;
+        *) usage;;
 
     esac
 
@@ -47,10 +40,4 @@ done
 
 shift $((OPTIND - 1))
 
-if [ "$pid_file" == "" ]; then
-
-    pid_file="$app_var/php-$host-$port.pid"
-
-fi
-
-$app_bin/php/php.service -h "$host" -o "$port" -d "$doc_root" -P "$pid_file" start "$@"
+$app_vendor_zerustech_cli_bin/php/php.service -h "$php_home" -S "$socket" -t "$doc_root" start "$@"

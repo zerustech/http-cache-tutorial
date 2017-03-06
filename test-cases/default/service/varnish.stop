@@ -15,4 +15,26 @@ runtime_base=$(dirname `cd $(dirname $BASH_SOURCE) && pwd`)
 # 
 # @author Michael Lee <michael.lee@zerustech.com>
 
-$app_bin/varnish/varnish.service stop "$@"
+varnish_socket="localhost:6082"
+
+function usage()
+{
+    printf "varnish.stop: usage: varnish.stop [-T varnish_host:varnish_port]\n"
+    exit 0
+}
+
+while getopts "T:" opt; do
+
+    case $opt in
+
+        b) varnish_socket="$OPTARG";;
+
+        *) usage;;
+
+    esac
+
+done
+
+shift $((OPTIND - 1))
+
+$app_vendor_zerustech_cli_bin/varnish/varnish.service -T "$varnish_socket" stop "$@"

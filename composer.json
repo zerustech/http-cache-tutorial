@@ -1,0 +1,22 @@
+{
+    "name": "zerustech/http-cache-tutorial",
+    "description": "This project is a tutorial for HTTP/1.1 caching mechanism and Varnish cache server. It describes the common topics, best practices, issues, and tricks in terms of test cases—each test case consists of a vcl file, one or more php files, a test.sh file for running the test case, and other related files.",
+    "type": "library",
+    "keywords": ["http cache tutorial", "varnish tutorial"],  
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Lee",
+            "email": "michael.lee@zerustech.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "zerustech/cli": ">=1.0-dev"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

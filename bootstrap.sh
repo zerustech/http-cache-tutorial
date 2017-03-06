@@ -12,15 +12,16 @@
 
 app_base=`dirname $BASH_SOURCE`
 app_base=`cd "$app_base" && pwd`
+
 app_bin=$app_base/bin
-app_lib=$app_base/lib
 app_var=$app_base/var
 app_etc=$app_base/etc
+
+app_vendor=$app_base/vendor
+app_vendor_zerustech_cli_bin=$app_vendor/zerustech/cli/bin
+app_vendor_zerustech_cli_lib=$app_vendor/zerustech/cli/lib
 
 php_home=/opt/php/5.6.14.mysql.5.6.27
 varnish_home=/opt/varnish/5.0.0
 
-source $app_lib/tty.sh
-source $app_lib/http.sh
-source $app_lib/php.sh
-source $app_lib/varnish.sh
+source $app_vendor_zerustech_cli_lib/tty.sh

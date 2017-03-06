@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# This file is part of the ZerusTech HTTP Cache Tutorial package.
+# 
+# (c) Michael Lee <michael.lee@zerustech.com>
+#
+# For the full copyright and license information, please view the LICENSE file 
+# that was distributed with this source code.
+
+base=`cd $(dirname $BASH_SOURCE) && pwd` && source $base/../../bootstrap.sh
+
+# This is a command line wrapper of zerustech/cli/bin/varnish/varnish.admin.
+# 
+# @author Michael Lee <michael.lee@zerustech.com>
+
+key_file="$app_etc/key"
+varnish_socket="localhost:6082"
+
+function usage()
+{
+    printf "varnish.admin: usage: varnish.admin [-h varnish_home] [-S varnish_key_file] [-T varnish_host:varnish_port]\n"
+    exit 0
+}
+
+while getopts "h:S:T:" opt; do
+
+    case $opt in
+
+        h) varnish_home="$OPTARG";;
+
+        S) key_file="$OPTARG";;
+
+        T) varnish_socket="$OPTARG";;
+
+        *) usage
+           ;;
+
+    esac
+
+done
+
+$app_vendor_zerustech_cli_bin/varnish/varnish.admin -h $varnish_home -S $key_file -T $varnish_socket
+
+printf "\n\n"

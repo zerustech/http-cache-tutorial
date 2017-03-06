@@ -1,0 +1,64 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "96c6563309d07df6d1a9f0e8a5e81ea6",
+    "content-hash": "a573fc868d5f21ebfe079aa93de90745",
+    "packages": [
+        {
+            "name": "zerustech/cli",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zerustech/cli.git",
+                "reference": "145346d6f6dd19312c9e2966c62adaded1a44f7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zerustech/cli/zipball/145346d6f6dd19312c9e2966c62adaded1a44f7d",
+                "reference": "145346d6f6dd19312c9e2966c62adaded1a44f7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Lee",
+                    "email": "michael.lee@zerustech.com"
+                }
+            ],
+            "description": "Commonly used functions and scripts for cli programming.",
+            "keywords": [
+                "bash",
+                "cli",
+                "php"
+            ],
+            "time": "2017-03-06 10:49:22"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "zerustech/cli": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}

@@ -13,8 +13,8 @@ base=`cd $(dirname $BASH_SOURCE) && pwd` && source $base/../../../../bootstrap.s
 # 
 # @author Michael Lee <michael.lee@zerustech.com>
 
-service=$base/../service                                                                                                 
-web=$base/../web 
+service=$base/../service
+web=$base/../web
 
 # For testing purpose, set default_grace to 0, otherwise, varnish will serve
 # stale contents.
@@ -29,10 +29,10 @@ tty_print_line -f green
 
 tty_printf "Access index.php to initialize cache: receives a fresh 200 response
 (miss).\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 tty_printf "Access index.php to initialize cache: receives a cached 200 response
 (hit).\n"
-$app_bin/http/get.sh -l /index.php
+$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
 
 $service/php.stop && $service/varnish.stop
