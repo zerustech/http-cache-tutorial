@@ -52,7 +52,7 @@ The directory structure of this project is as follows:
 ```bash
 <base>             # project base directory
   \_ bin
-  |   \_ tasks     # scripts for starting/stopping test cases
+  |   \_ task      # scripts for starting/stopping test cases
   |   |_ varnish   # varnish management scripts (e.g., starting varnish server).
   |
   |_ docs          # documents
@@ -137,24 +137,25 @@ debug                    # the directory name of the debug test case is "debug"
 $ cd <base>
 $
 $ # run all test cases interactively in silent mode.
-$ bin/tasks/tasks.run test-cases
+$ bin/tasks/task.all.run test-cases
 $
 $ # run all test cases interactively in verbose mode.
-$ bin/tasks/tasks.run -v test-cases 
+$ bin/tasks/task.all.run -v test-cases
 $
 $ # run all test cases automatically in silent mode.
-$ bin/tasks/tasks.run -a test-cases
+$ bin/tasks/task.all.run -a test-cases
 $
 $ # run all test cases automatically in verbose mode.
-$ bin/tasks/tasks.run -a -v test-cases
+$ bin/tasks/task.all.run -av test-cases
 $
-$ # Usage of tasks.run:
-$ # tasks.run [-iasv] [-S script_name_pattern] [-l log_file] [test_case_dir]
+$ # Usage of task.all.run:
+$ # task.all.run: usage: task.all.run [-av] [-l log_file] [-e task_exec]
+$ # [-p path_pattern] [-n name_pattern] [-d depth|min+|min-max] path
+$ # [task_arguments ...]
+$ #
 $ # The options are as follows:
-$ #     -i Request confirming before running each test case.
-$ #     -a Run all test cases automatically.
-$ #     -s Do not display any output from the test cases (default).
-$ #     -v Display output from test cases.
+$ # -a Run all tasks automatically.
+$ # -v Run all tasks in verbose mode: display output from tasks to stdout.
 ```
 
 ### Run Single Test Case ###
@@ -168,7 +169,7 @@ $ bin/test.sh
 
 ::: info-box note
 
-NOTE: when running test cases with `tasks.run` or `test.sh`, both the varnish
+NOTE: when running test cases with `task.all.run` or `test.sh`, both the varnish
 cache server and the php builtin web server are started and stopped automatically.
 
 :::
