@@ -14,3 +14,4 @@ test-cases/*/*/bin/cookie.txt
 test-cases/*/*/web/asset.txt
 test-cases/*/*/web/version.txt
 test-cases/*/*/web/session.txt
+composer.lock
