@@ -135,26 +135,30 @@ debug                    # the directory name of the debug test case is "debug"
 ```bash
 $ cd <base>
 $
-$ # run all test cases interactively in silent mode.
-$ bin/tasks/task.all.run test-cases
-$
 $ # run all test cases interactively in verbose mode.
-$ bin/tasks/task.all.run -v test-cases
+$ bin/tasks/task.all.run
 $
-$ # run all test cases automatically in silent mode.
-$ bin/tasks/task.all.run -a test-cases
+$ # run all test cases in http folder interactively in verbose mode.
+$ bin/tasks/task.all.run test-cases/http
 $
-$ # run all test cases automatically in verbose mode.
-$ bin/tasks/task.all.run -av test-cases
+$ # run all test cases automatically.
+$ bin/tasks/task.all.run -a
+$
+$ # run all test cases in scilent mode.
+$ bin/tasks/task.all.run -s
+$
+$ # run all test cases in verbose mode.
+$ bin/tasks/task.all.run -v
 $
 $ # Usage of task.all.run:
-$ # task.all.run: usage: task.all.run [-av] [-l log_file] [-e task_exec]
+$ # task.all.run: usage: task.all.run [-avs] [-l log_file] [-e task_exec]
 $ # [-p path_pattern] [-n name_pattern] [-d depth|min+|min-max] path
 $ # [task_arguments ...]
 $ #
 $ # The options are as follows:
 $ # -a Run all tasks automatically.
 $ # -v Run all tasks in verbose mode: display output from tasks to stdout.
+$ # -s Run all tasks in scilent mode: hide output from tasks.
 ```
 
 ### Run Single Test Case ###

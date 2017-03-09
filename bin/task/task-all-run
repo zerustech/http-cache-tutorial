@@ -12,5 +12,6 @@ base=`cd $(dirname $BASH_SOURCE) && pwd` && source $base/../../bootstrap.sh
 log_file="$base/../../var/task-all-run.log"
 name_pattern="test.sh"
 path="$app_base/test-cases"
+verbose="1"
 
 source $app_vendor_zerustech_cli_bin/task/task-all-run
