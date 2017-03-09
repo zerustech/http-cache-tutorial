@@ -18,26 +18,4 @@ runtime_base=$(dirname `cd $(dirname $BASH_SOURCE) && pwd`)
 socket="0.0.0.0:8000"
 doc_root=$runtime_base/web
 
-function usage()
-{
-    printf "php.start: usage: php.start [-S host:port] [-t doc_root] [arguments ...]\n"
-    exit 0
-}
-
-while getopts "S:t:" opt; do
-
-    case $opt in
-
-        S) socket="$OPTARG";;
-
-        t) doc_root="$OPTARG";;
-
-        *) usage;;
-
-    esac
-
-done
-
-shift $((OPTIND - 1))
-
-$app_vendor_zerustech_cli_bin/php/php.service -h "$php_home" -S "$socket" -t "$doc_root" start "$@"
+source $app_vendor_zerustech_cli_bin/php/php-service start "$@"

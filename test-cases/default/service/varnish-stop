@@ -10,31 +10,11 @@
 default_base=$(dirname `cd -P $(dirname $BASH_SOURCE) && pwd`) && source $default_base/../../bootstrap.sh
 runtime_base=$(dirname `cd $(dirname $BASH_SOURCE) && pwd`)
 
-# This script accepts optional arguments for stopping a php builtin server from
-# command line. It is a wrapper to the php.service script.
+# This script accepts optional arguments for stopping a varnish cache server from
+# command line. It is a wrapper to the varnish-service script.
 # 
 # @author Michael Lee <michael.lee@zerustech.com>
 
-socket="0.0.0.0:8000"
+varnish_socket="localhost:6082"
 
-function usage()
-{
-    printf "php.stop: usage: php.stop [-S host:port]\n"
-    exit 0
-}
-
-while getopts "S:" opt; do
-
-    case $opt in
-
-        S) socket="$OPTARG";;
-
-        *) usage;;
-
-    esac
-
-done
-
-shift $((OPTIND - 1))
-
-$app_vendor_zerustech_cli_bin/php/php.service -S "$socket" stop
+source $app_vendor_zerustech_cli_bin/varnish/varnish-service -T "$varnish_socket" stop "$@"

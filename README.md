@@ -57,7 +57,6 @@ The directory structure of this project is as follows:
   |
   |_ docs          # documents
   |_ etc           # varnish builtin vcl file and secret key file
-  |_ lib           # scripts providing common functions (e.g., tty functions).
   |
   |_ test-cases
   |   \_ default   # default test cases

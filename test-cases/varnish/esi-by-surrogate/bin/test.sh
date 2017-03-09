@@ -18,7 +18,7 @@ web=$base/../web
 
 # For testing purpose, set default_grace to 0, otherwise, varnish will serve
 # stale contents.
-$service/php.start && $service/varnish.start "-p default_grace=0"
+$service/php-start && $service/varnish-start "-p default_grace=0"
 
 # wait for the php builtin server to start
 sleep 1
@@ -28,9 +28,9 @@ tty_printf -f green "Test Case: esi by surrogate\n"
 tty_print_line -f green
 
 tty_printf "Access index-esi.php: esi is enabled.\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index-esi.php
+$app_vendor_zerustech_cli_bin/http/http-get -l /index-esi.php
 
 tty_printf "Access index-no-esi.php: esi is disabled.\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index-non-esi.php
+$app_vendor_zerustech_cli_bin/http/http-get -l /index-non-esi.php
 
-$service/php.stop && $service/varnish.stop
+$service/php-stop && $service/varnish-stop

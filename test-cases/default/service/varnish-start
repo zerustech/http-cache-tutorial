@@ -10,31 +10,15 @@
 default_base=$(dirname `cd -P $(dirname $BASH_SOURCE) && pwd`) && source $default_base/../../bootstrap.sh
 runtime_base=$(dirname `cd $(dirname $BASH_SOURCE) && pwd`)
 
-# This script accepts optional arguments for stopping a varnish cache server from
-# command line. It is a wrapper to the varnish.service script.
+# This script accepts optional arguments for starting a varnish cache server from
+# command line. It is a wrapper to the varnish-service script.
 # 
 # @author Michael Lee <michael.lee@zerustech.com>
 
+config_file=$runtime_base/etc/config.vcl
+key_file=$app_etc/key
+http_socket="0.0.0.0:80"
 varnish_socket="localhost:6082"
+runtime_params="-p vcl_dir=$runtime_base/etc"
 
-function usage()
-{
-    printf "varnish.stop: usage: varnish.stop [-T varnish_host:varnish_port]\n"
-    exit 0
-}
-
-while getopts "T:" opt; do
-
-    case $opt in
-
-        b) varnish_socket="$OPTARG";;
-
-        *) usage;;
-
-    esac
-
-done
-
-shift $((OPTIND - 1))
-
-$app_vendor_zerustech_cli_bin/varnish/varnish.service -T "$varnish_socket" stop "$@"
+$app_vendor_zerustech_cli_bin/varnish/varnish-service -h "$varnish_home" -f "$config_file" -S "$key_file" -a "$http_socket" -T "$varnish_socket" start "$runtime_params" "$@"

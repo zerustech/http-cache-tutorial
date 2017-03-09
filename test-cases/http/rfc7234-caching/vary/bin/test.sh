@@ -18,7 +18,7 @@ web=$base/../web
 
 # For testing purpose, set default_grace to 0, otherwise, varnish will serve
 # stale contents.
-$service/php.start && $service/varnish.start "-p default_grace=0"
+$service/php-start && $service/varnish-start "-p default_grace=0"
 
 # wait for the php builtin server to start
 sleep 1
@@ -29,19 +29,19 @@ tty_print_line -f green
 
 tty_printf "Include 'X-Accept-Content-Category: test001' in the reqeuest and
 test: receives a fresh 200 response (miss).\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test001"
+$app_vendor_zerustech_cli_bin/http/http-get -l /index.php "X-Accept-Content-Category: test001"
 
 tty_printf "Include 'X-Accept-Content-Category: test002' in the reqeuest and
 test: receives a fresh 200 response (miss).\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test002"
+$app_vendor_zerustech_cli_bin/http/http-get -l /index.php "X-Accept-Content-Category: test002"
 
 tty_printf "Include 'X-Accept-Content-Category: test001' in the reqeuest and
 test: receives a cached 200 response (hit).\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test001"
+$app_vendor_zerustech_cli_bin/http/http-get -l /index.php "X-Accept-Content-Category: test001"
 
 tty_printf "Include 'X-Accept-Content-Category: test002' in the reqeuest and
 test: receives a cached 200 response (hit).\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index.php "X-Accept-Content-Category: test002"
+$app_vendor_zerustech_cli_bin/http/http-get -l /index.php "X-Accept-Content-Category: test002"
 
 tty_printf "The selected responses for category 'test001' and 'test002' are
 different, therefore we can confirm that the 'X-Accept-Content-Category' request
@@ -49,4 +49,4 @@ header field is used as the secondary cache key by varnish.\n"
 
 tty_printf -f red "NOTE: There is no way to dump the cache keys.\n\n"
 
-$service/php.stop && $service/varnish.stop
+$service/php-stop && $service/varnish-stop

@@ -18,7 +18,7 @@ web=$base/../web
 
 # For testing purpose, set default_grace to 0, otherwise, varnish will serve
 # stale contents.
-$service/php.start && $service/varnish.start "-p default_grace=0"
+$service/php-start && $service/varnish-start "-p default_grace=0"
 
 # wait for the php builtin server to start
 sleep 1
@@ -29,10 +29,10 @@ tty_print_line -f green
 
 tty_printf "Access index.php to initialize cache: receives a fresh 200 response
 (miss).\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
+$app_vendor_zerustech_cli_bin/http/http-get -l /index.php
 
 tty_printf "Access index.php to initialize cache: receives a cached 200 response
 (hit).\n"
-$app_vendor_zerustech_cli_bin/http/http.get -l /index.php
+$app_vendor_zerustech_cli_bin/http/http-get -l /index.php
 
-$service/php.stop && $service/varnish.stop
+$service/php-stop && $service/varnish-stop
